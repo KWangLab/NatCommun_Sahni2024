@@ -1,6 +1,7 @@
 <center>
 # IRIS R Package
 </center>
+
 <img src="https://github.com/sahil-sahni/IRIS/blob/main/4.%20Figure/images/png/IRIS%20figure%201%20Final%20Version%20%5Bnc%20acc%5D.png" alt="grouping">
 
 ## IRIS: **I**mmunotherapy **R**esistance *cell-cell* **I**nteraction **S**canner
