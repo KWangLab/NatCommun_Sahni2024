@@ -1,0 +1,27 @@
+Package: IRIS
+Type: Package
+Title: Immunotherapy Resistance cell-cell Interaction Scanner
+Version: 0.1.0
+Description: Infers Immune Checkpoint Blockade (ICB) resistance relevant ligand-receptor interactions from patient deconvolved bulk transcriptomics.
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    dplyr,
+    magrittr,
+    parallel,
+    pROC,
+    rBayesianOptimization,
+    tidyr
+Depends: 
+    R (>= 4.4.1)
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
+RoxygenNote: 7.3.2
+Authors@R: c(
+    person("Sahil", "Sahni", , "sahnis2@nih.gov", role = c("aut", "cre")),
+    person("Kun", "Wang", , "kun.wang@nih.gov", role = "aut"),
+    person("Eytan", "Ruppin", , "eytan.ruppin@nih.gov", role = "aut")
+  )

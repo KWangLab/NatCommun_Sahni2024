@@ -1,0 +1,174 @@
+---
+title: "SOCIAL_Jerby-Arnon"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{SOCIAL_Jerby-Arnon}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  eval = F
+)
+```
+
+## Single-cell transcriptOmics Cell-cell Interaction ALgorithm
+
+**Attention**
+
+The tutorial provided uses **Jerby-Arnon et al. Cell 2018** datasets to demonstrate how to use SOCIAL. Due to the large memory required to analyze single-cell transcriptomics, we require that users run SOCIAL (at least step 2-4) on a HPC supercomputing cluster, such as the NIH Biowulf. This script will reproduce the SOCIAL results published by Sahni et al.
+
+## 1. Installation
+
+```{r install}
+require(devtools)
+devtools::install_github("sahil-sahni/5. Package(s)/SOCIAL")
+```
+
+## 2. Library
+
+```{r library}
+library(SOCIAL)
+```
+
+## 3. Load inputs
+
+Download the appropriate data sets here:
+
+1. [GSE115978_tpm.csv](https://ftp.ncbi.nlm.nih.gov/geo/series/GSE115nnn/GSE115978/suppl/GSE115978%5Ftpm%2Ecsv%2Egz)
+
+2. [NIHMS1508390-supplement-8.xlsx](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6410377/bin/NIHMS1508390-supplement-8.xlsx)
+
+3. [NIHMS1770717-supplement-2.xlsx](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8983586/bin/NIHMS1770717-supplement-2.xlsx)
+
+4. [Livnat_updated_celltypes_table.rds](https://zenodo.org/records/13172848)
+
+Load expr, meta data, and lirics database.
+
+```{r input}
+## ------- Input -------
+# data from Livnat Jerby-Arnon Cell 2018
+expr = read.csv("GSE115978_tpm.csv", row.names=1) %>% as.matrix(.) 
+patient_meta = readxl::read_excel("NIHMS1508390-supplement-8.xlsx",sheet = "TableS1A_scCohort")
+
+# data from Sahil Sahni Nature Communications 2024
+ct_info = readRDS("Livnat_updated_celltypes_table.rds")
+
+# data from Kun Wang Cancer Discovery 2022
+lirics.db = readxl::read_excel("NIHMS1770717-supplement-2.xlsx",sheet = "ligand_receptor_interactions", skip=1) %>% dplyr::select(ligand, receptor)
+```
+
+## 4. Initialize seed
+```{r seed}
+## ------- Initialize environment -------
+## set seed
+set.seed(20892) #NIH zip code
+
+## parallelize code
+ncpus <- parallelly::availableCores()
+print(ncpus)
+options(mc.cores = ncpus) # set a global option for parallel packages
+```
+
+## 5. Organize inputs
+
+### expr
+expression matrix (TPM), rows are genes, columns are cells. Set rownames to gene symbols and column names to cell ids.
+
+```{r expr}
+## ------- reformat input for SOCIAL (Change as needed) -------
+# reformat single-cell expression profile
+row.names(expr) = toupper(row.names(expr))
+sc_gene = row.names(expr)
+
+# correct scRNA-seq to TPM; Jerby-Arnon et al. published values in log2(TPM/10 + 1)
+expr = 10*((2^(expr))-1)
+```
+
+### ct_map 
+dataframe describing the mapping of each cell to individual and cell type. Due to the sparsity in the present cell type across patients within this cohort, we elected to develop pseudopatients for each treatment group, and infer the activity within each pseudopatient using SOCIAL. To do this we broke this section into part A for reformatting meta data and part B for generating pseudopatients.
+
+#### A. reformatting meta data
+
+```{r meta}
+#### patient-specific meta information ####
+## format: data.frame with col: patient; treatment (Untreated (NAV) or Post-ICI resistant (RES))
+
+patient_meta = patient_meta %>% set_colnames(., .[2,]) %>% .[-1:-2,-1] %>%
+  dplyr::select(patient="Sample", treatment="Treatment group") %>%
+  mutate(patient=toupper(patient),
+         treatment= plyr::mapvalues(treatment, from=c("Untreated", "Post-ICI (resistant)"), to=c('NAV','RES'))) #simplify label as NAV and RES
+
+#### single-cell cell type specific information ####
+## format: data.frame with col: Cell (barcode for sc); cell_type (updated cell type information); patient
+
+ct_info = ct_info %>% select(Cell=1, cell_type=2, patients=3) %>%
+  magrittr::set_rownames(NULL) %>%
+  mutate(Cell=as.character(Cell),
+         cell_type=as.character(cell_type),
+         patients=toupper(as.character(patients))) # **make basic ct_map outline**
+
+## make single-cell cell type compatible with deconvolved cell types
+sc_ct= c('Mal', 'skinDC', 'Endo.', 'Macrophage', 'T.CD4', 'CAF', 'T.CD8', 'NK', 'B.cell', 'pDC')
+deconv_ct= c('Mal', 'skinDC', 'Endo', 'Macrophage', 'TCD4', 'CAF', 'TCD8', 'NK', 'Bcell', 'pDC')
+
+ct_info = ct_info %>% mutate(cell_type=mapvalues(cell_type,from=sc_ct, to=deconv_ct))
+
+## assign Cell ("barcode") information with treatment group ('NAV' is naive, 'RES' is post-ICI resistant)
+ct_info$group = mapvalues(ct_info$patients, from=patient_meta$patient, to=patient_meta$treatment)
+ct_info = ct_info %>% subset(group != 'OR') # remove one responder patient
+```
+
+#### B. generating pseudopatients
+Specify the % of downsampling and the number of pseudopatients you'd like to create per group.
+
+```{r pseudopatients}
+## ------- create pseudopatients from single-cell meta information -------
+
+# hyperparameter
+n = 200 # number of patients per group
+prop = 0.4 # % of downsampling for each cell type in each group
+
+# generate pseudopatients ct_map
+ct_map = lapply(1:npp, function(i) SOCIAL::generate_pseudopatient(n, ct_info, prop))
+ct_map = do.call(rbind, ct_map) %>% as.data.frame(.) #creates a ct_map with all pseudo patients
+```
+
+## 6. SOCIAL
+### Step 1: Query the LIRICS database
+Initially, we queried the LIRICS database to identify plausible ligand-receptor interactions. Output is a matrix with first column corresponding to ligand genes and second-fourth column corresponding to receptor genes
+
+download [LIRICS.db](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8983586/bin/NIHMS1770717-supplement-2.xlsx) excel here
+
+```{r}
+## SOCIAL Step 1 ## 
+
+# subset genes within ligand-receptor complexes that are shared with LIRICS database
+pairs = SOCIAL.query_LRdb(lirics.db, expr)
+```
+
+### Step 2-3: Compute interaction score and permutation test.
+Next, we computed the ligand-receptor interaction score by multiplying the average expression levels of the ligand and receptor complexes for each interaction pair and cell type. Following that, we performed permutation tests (utilizing 100 iterations in our study) by randomly shuffling cell type labels. This allowed us to derive empirical p-values by calculating the fraction of permutation tests resulting in a higher interaction score than the foreground score determined in step 2. A lower p-value suggests a higher likelihood of the interaction occurring.
+
+We require users to run SOCIAL step 2 on a HPC supercomputing cluster to harness parallelization with rslurm:
+
+```{r}
+## SOCIAL Step 2-3 with HPC clustering ## 
+n_iterations = 100 # bootstrapping null distribution (100 recommended)
+interaction_score = SOCIAL.cis_rslurm(expr, ct_map, pairs, n_iterations = n_iterations)
+```
+
+### Step 4: Accomadate for variations across samples
+
+Optionally, ligand-receptor interactions can be further denoted as significantly activated if the average expression level of both the ligand and receptor genes is greater than the median across all samples.
+
+```{r}
+## SOCIAL Step 4 ## 
+SOCIAL_output = SOCIAL.infer_activity(interaction_score, # SOCIAL step 2-3 output
+                      p_cutoff = 0.05, # recommended cut-off
+                      median_cutoff = T) # recommended if 2+ more unique samples are characterized 
+SOCIAL_output
+```
