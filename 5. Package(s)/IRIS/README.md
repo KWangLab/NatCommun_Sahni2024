@@ -1,5 +1,5 @@
 # IRIS R Package
-Developed by Sahil Sahni
+08/11/2024
 
 <img src="https://github.com/sahil-sahni/IRIS/blob/main/4.%20Figure/images/png/IRIS%20figure%201%20Final%20Version%20%5Bnc%20acc%5D.png" alt="grouping">
 
