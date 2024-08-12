@@ -63,9 +63,8 @@ Sahni et al. "A machine learning model reveals expansive downregulation of ligan
 
 ## Contact Author(s)
 ### Corresponding Author(s)
-**Kun Wang** (kun.wang@nih.gov)
-
-**Eytan Ruppin** (eytan.ruppin@nih.gov)
+1. **Kun Wang** (kun.wang@nih.gov)
+2. **Eytan Ruppin** (eytan.ruppin@nih.gov)
 
 ## Acknowledgement(s)
 IRIS, SOCIAL, and SPECIAL figures were created with BioRender.com. IRIS figure was developed by Di Wu, PhD.
