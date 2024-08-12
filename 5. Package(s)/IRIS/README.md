@@ -1,4 +1,4 @@
-<div align = "center".
+<div align = "center">
   # IRIS R Package
 </div>
   
