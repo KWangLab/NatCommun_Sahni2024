@@ -18,3 +18,6 @@ See **Tutorial** & **Package** here: XXXX
 require(devtools)
 devtools::install_github("sahil-sahni/5. Package(s)/IRIS")
 ```
+
+## Tutorials
+
