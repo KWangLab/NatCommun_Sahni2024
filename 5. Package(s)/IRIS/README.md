@@ -1,5 +1,5 @@
 <div align = "center">
-  # IRIS R Package
+  <h1>IRIS R Package</h1>
 </div>
   
 <img src="https://github.com/sahil-sahni/IRIS/blob/main/4.%20Figure/images/png/IRIS%20figure%201%20Final%20Version%20%5Bnc%20acc%5D.png" alt="grouping">
