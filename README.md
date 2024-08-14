@@ -10,12 +10,11 @@ We developed **I**mmunotherapy **R**esistance cell-cell **I**nteraction **S**can
 
 IRIS consists of two steps: Step I uses a Fisher’s test to identify differentially activated ligand-receptor interactions in the pre-treatment and non-responder post-treatment samples. These interactions are categorized as either resistant downregulated interactions (RDI) or resistant upregulated interactions (RUI) based on their differential activity state in the post-treatment vs. the pre-treatment state; that is, RDIs are downregulated in post-treatment resistant patients and vice versa for RUIs. Step II employs a hill climbing aggregative feature selection algorithm to choose the optimal set of RDIs or RUIs for classifying responders and non-responders in pre-treatment samples. The final output of IRIS is a selected set of RDIs and RUIs hypothesized to facilitate in ICB resistance, that can be used to predict ICB therapy response in a new ICB cohort.
 
-See **Tutorial** & **Package** here: XXXX
+See **Tutorial** & **Package** here: COMING SOON
 
 #### Installation of IRIS
 ```r
-require(devtools)
-devtools::install_github("sahil-sahni/5. Package(s)/IRIS")
+COMING SOON
 ```
 
 ### SOCIAL: **S**ingle-cell transcrip**O**mics **C**ell-cell **I**nteraction **AL**gorithm
@@ -32,12 +31,11 @@ See **Tutorial** & **Package** here: XXXX
 
 To quantify the activity of cell-type-specific ligand-receptor interactions within each spatial transcriptomics slide, we further developed our in-house single-cell ligand-receptor inference tool called SOCIAL, into SPECIAL (**SP**atial c**E**ll-**C**ell **I**nteraction **AL**gorithm). This novel iteration is customized specifically for spatial transcriptomics with aligned single-cell transcriptomes, the direct output of [**CytoSPACE**](https://github.com/digitalcytometry/cytospace/tree/main). It consists of three major steps: Step I utilizes either a sliding window or k-means clustering approach on bulk (i.e. Visium 10X and Legacy) and SlideSeqV2 spatial transcriptomics, respectively, to divide spatial slides into “regions” of approximately 250 μm in diameter. Step II employs SOCIAL steps 1 through 3 to infer cell-type-specific interaction activity within each ~250 μm region. Step III, ligand-receptor interactions are further denoted as significantly activated if the average expression levels of both the ligand and receptor genes within the respective cell type is greater than the median across all regions. The final output of SPECIAL is a cell-type-specific ligand-receptor interaction activity profile across all regions in a spatial transcriptomics slide.
 
-See **Tutorial** & **Package** here: XXXX
+See **Tutorial** & **Package** here: COMING SOON!!
 
 #### Installation of SOCIAL & SPECIAL
 ```r
-require(devtools)
-devtools::install_github("sahil-sahni/5. Package(s)/SOCIAL")
+COMING SOON
 ```
 
 ## Data availability 
