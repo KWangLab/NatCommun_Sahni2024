@@ -57,5 +57,5 @@ fig2c=ggplot(data=bar_input, aes(x=cohort, y=AUC, fill=method)) +
 plot(fig2c)
 
 ## paper statistics
-bar_input %>% group_by(method) %>% dplyr::summarise(mean=mean(AUC))
+bar_input %>% group_by(method) %>% dplyr::summarise(mean=mean(AUC), sd=sd(AUC), CV=sd(AUC)/mean(AUC)*100)
 
