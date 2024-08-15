@@ -12,7 +12,7 @@ We developed **I**mmunotherapy **R**esistance cell-cell **I**nteraction **S**can
 
 IRIS consists of two steps: Step I uses a Fisher’s test to identify differentially activated ligand-receptor interactions in the pre-treatment and non-responder post-treatment samples. These interactions are categorized as either resistant downregulated interactions (RDI) or resistant upregulated interactions (RUI) based on their differential activity state in the post-treatment vs. the pre-treatment state; that is, RDIs are downregulated in post-treatment resistant patients and vice versa for RUIs. Step II employs a hill climbing aggregative feature selection algorithm to choose the optimal set of RDIs or RUIs for classifying responders and non-responders in pre-treatment samples. The final output of IRIS is a selected set of RDIs and RUIs hypothesized to facilitate in ICB resistance, that can be used to predict ICB therapy response in a new ICB cohort.
 
-See **Tutorial** & **Package** here: COMING SOON (By September 2024)
+See **Tutorial** & **Package** here: COMING SOON (By September 2024; email sahnis1@mskcc.org for information)
 
 ### SOCIAL: **S**ingle-cell transcrip**O**mics **C**ell-cell **I**nteraction **AL**gorithm
 <img src="https://github.com/sahil-sahni/IRIS/blob/main/4.%20Figure/images/png/SOCIAL%20%5Bnc%20acc%5D.png" alt="grouping">
