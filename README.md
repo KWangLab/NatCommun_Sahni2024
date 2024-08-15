@@ -66,11 +66,5 @@ Sahni et al. "A machine learning model reveals expansive downregulation of ligan
 1. **Kun Wang** (kun.wang@nih.gov)
 2. **Eytan Ruppin** (eytan.ruppin@nih.gov)
 
-### Developer(s)
-* IRIS was developed by Sahil Sahni ([sahil-sahni](https://github.com/sahil-sahni)) and Kun Wang ([kwangcb](https://github.com/kwangcb))
-* SOCIAL was developed by Kun Wang ([kwangcb](https://github.com/kwangcb)), Sahil Sahni ([sahil-sahni](https://github.com/sahil-sahni)), and Sushant Patkar ([spatkar94](https://github.com/spatkar94))
-* SPECIAL was developed by Sahil Sahni ([sahil-sahni](https://github.com/sahil-sahni)) and Kun Wang ([kwangcb](https://github.com/kwangcb))
-
-
 ## Acknowledgement(s)
 IRIS, SOCIAL, and SPECIAL figures were created with BioRender.com. IRIS figure was developed by Di Wu, PhD.
