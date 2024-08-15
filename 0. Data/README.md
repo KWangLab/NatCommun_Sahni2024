@@ -2,32 +2,33 @@
 The CODEFACS, LIRICS, SOCIAL, CytoSPACE, and SPECIAL data (and relevant data) generated in this study have been deposited to https://zenodo.org/records/13172848.
 
 ## IRIS Data:
-### benchmark
+### a. benchmark
 results regarding applying existing transcriptomics-based biomarkers to predict ICB response.
 
-#### signatures
+#### i. signatures
 1. **```impres_auc_supp.RDS```**  AUCs for IMPRES on bulk RNA-seq cohort (mono./comb. therapy separated)
 2. **```sig_auc.RDS```**          AUCs for signatures (including IMPRES) on bulk RNA-seq cohort
 3. **```sig_input_thrane.RDS```** raw signature scores on Thrane et al. spatial cohort
 4. **```sig_input.RDS```**        raw signature scores on bulk RNA-seq cohort
 
-#### TIDE
+#### ii. TIDE
 1. **```tide_auc_supp.RDS```**    AUCs for TIDE on bulk RNA-seq cohort (mono./comb. therapy seperated)
 2. **```tide_auc.RDS```**         AUCs for TIDE on bulk RNA-seq cohort
 3. **```tide_input.RDS```**       raw signature scores for TIDE on bulk RNA-seq cohort
 
-### CODEFACES
-#### output
+### b. CODEFACES
+deconvolved expression data genereated for this study. 
+
+#### i. output
 1. **```GE_imp_auslander.rds```** CODEFACS' deconvolved expression for Auslander et al.
 2. **```GE_imp_puch.rds```**      CODEFACS' deconvolved expression for puch et al. 
 
-### CytoSPACE
-#### results
-##### Biermann et al.
-CytoSPACE output for Biermann et al. when using matched SlideSeqV2 and snRNA-seq. "firstctassigned" and "secondctassigned" corresponds to the location of the first and second cell type inferred respectively.
+### c. CytoSPACE
+CytoSPACE output for Biermann et al. and Thrane et al. For Biermann et al., CytoSPACE was ran on matched SlideSeqV2 and snRNA-seq data. The "firstctassigned" and "secondctassigned" corresponds to the location of the first and second cell type inferred respectively. For Thrane et al., CytoSPACE ran on unmatched Legacy ST and scRNA-seq (Jerby-Arnon et al. Cell 2018).
 
-##### Thrane et al.
-CytoSPACE output for Thrane et al. when using unmatched Legacy ST and scRNA-seq (Jerby-Arnon et al.).
+#### i. results
+1. **Biermann et al.**
+2. **Thrane et al.**
 
 ### IRIS
 #### results
