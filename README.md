@@ -31,7 +31,7 @@ To quantify the activity of cell-type-specific ligand-receptor interactions with
 See **Tutorial** & **Package** here: COMING SOON     *(By September 2024)*
 
 ## Data availability 
-The CODEFACS, LIRICS, SOCIAL, CytoSPACE, and SPECIAL data (and relevant data) generated in this study have been deposited to XX.
+The CODEFACS, LIRICS, SOCIAL, CytoSPACE, and SPECIAL data (and relevant data) generated in this study have been deposited to https://zenodo.org/records/13172848.
 
 ## Folders
 0. **Data**: details regarding data files from zenodo
