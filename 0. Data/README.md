@@ -59,30 +59,39 @@ LIRICS data genereated for this study.
 1. **```coding_genes.txt```** list of protein coding genes
 
 ## f. sc ICB data
-#### Jerby-Arnon et al. 2018 Cell
+### i. Jerby-Arnon et al. 2018 Cell
 1. **```Livnat_updated_celltypes_table.rds```** Reclustered cell type meta informatoin used for Jerby-Arnon et al.'s single-cell cohort (i.e. for SOCIAL)
 
 ## g. SOCIAL
 SOCIAL data genereated for this study. 
 
-#### output
-##### Jerby-Arnon et al. Cell 2018
+### i. output
+#### a. Jerby-Arnon et al. Cell 2018
 1. **```livnat2018_TPM_400pseudopat_40ds_SOCIAL.rds```** SOCIAL output
 
-### SPECIAL
-#### Biermann et al. 2022
-##### organized input
+## h. SPECIAL
+SPECIAL data genereated for this study. 
+
+### i. Biermann et al. 2022
+#### a. organized input
 1. **```biermann2022_SPECIAL_input.RDS```** SPECIAL input
 
-#### output
+#### b. output
 1. **```biermann2022_SPECIAL_input.RDS```** SPECIAL output
 
-#### Thrane et al. 2018
-##### organized input
+### ii. Thrane et al. 2018
+#### a. organized input
 1. **```thrane2018_SPECIAL_input.RDS```** SPECIAL input
 
-#### output
+#### b. output
 1. **```thrane2018_SPECIAL_input.RDS```** SPECIAL output
+
+## i. Spatial Seurat
+Cell fraction data generated for input to CytoSPACE.
+
+### i. Thrane et al.
+#### a. cell fraction
+
 
 ## Citation
 If using IRIS, SOCIAL, SPECIAL, or any of the pertaining results and data, please cite:
