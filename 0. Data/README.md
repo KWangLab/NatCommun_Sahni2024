@@ -45,13 +45,12 @@ LIRICS data genereated for this study.
 ### i. LIRICS database
 1. **```lirics_skcm_database_interactions.RDS```** list of all possible literature-curated cell-type-specific ligand-receptor interactions within the Melanoma TME across the 10 cell types deconvolved.
 
-### ii. organized data
-#### a. ICB
+### ii. organized data/ICB
 1. **```IRIS_LIRICS_final_ICB_cohort_input_OS.Rdata```** Organized LIRICS data for ICB cohorts with overall survival timeline information
 2. **```IRIS_LIRICS_final_ICB_cohort_input_PFS.Rdata```** Organized LIRICS data for ICB cohorts with progression free survival timeline information
 3. **```IRIS_LIRICS_final_ICB_cohort_input_response.Rdata```** Organized LIRICS data for ICB cohorts with ICB response information (input for IRIS)
 
-#### b. TCGA
+### iii. organized data/TCGA
 1. **```TCGA_LIRICS_SURV.Rdata```** Organized LIRICS data for TCGA-SKCM with prorgession free and overall survival timeline information
 2. **```TCGA_LIRICS.Rdata```** Organized LIRICS data for TCGA-SKCM with additional meta information (deconvolved cell fraction, hot/cold TME, etc.)
 
@@ -65,38 +64,37 @@ LIRICS data genereated for this study.
 ## g. SOCIAL
 SOCIAL data genereated for this study. 
 
-### i. output
-#### a. Jerby-Arnon et al. Cell 2018
+### i. output/Jerby-Arnon et al. Cell 2018
 1. **```livnat2018_TPM_400pseudopat_40ds_SOCIAL.rds```** SOCIAL output
 
 ## h. SPECIAL
 SPECIAL data genereated for this study. 
 
-### i. Biermann et al. 2022
-#### a. organized input
+### i. Biermann et al. 2022/organized input
 1. **```biermann2022_SPECIAL_input.RDS```** SPECIAL input
 
-#### b. output
+### ii. Biermann et al. 2022/output
 1. **```biermann2022_SPECIAL_input.RDS```** SPECIAL output
 
-### ii. Thrane et al. 2018
-#### a. organized input
+### iii. Thrane et al. 2018/organized input
 1. **```thrane2018_SPECIAL_input.RDS```** SPECIAL input
 
-#### b. output
+### iv. Thrane et al. 2018/output
 1. **```thrane2018_SPECIAL_input.RDS```** SPECIAL output
 
 ## i. Spatial Seurat
 Cell fraction data generated for input to CytoSPACE.
 
-### i. Thrane et al.
-#### a. cell fraction
+### i. Thrane et al./cell fraction
+Spatial Seurat deconvolved cell fraction at each spatial coordinate
 
+### i. Thrane et al./weights
+Spatial Seurat deconvolved cell fraction across the entire spatial slide (used for CytoSPACE)
 
-## Citation
+# Citation
 If using IRIS, SOCIAL, SPECIAL, or any of the pertaining results and data, please cite:
 
 Sahni et al. "A machine learning model reveals expansive downregulation of ligand-receptor interactions enhancing lymphocyte infiltration in melanoma with acquired resistance to Immune Checkpoint Blockade. *N C* **X**, XXXX (XXXX). https://doi.org
 
-## Corresponding Author(s)
+# Corresponding Author(s)
 Kun Wang (kun.wang@nih.gov) and Eytan Ruppin (eytan.ruppin@nih.gov)
