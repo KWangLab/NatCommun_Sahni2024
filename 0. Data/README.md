@@ -1,7 +1,7 @@
 # Data availability
 The CODEFACS, LIRICS, SOCIAL, CytoSPACE, and SPECIAL data (and relevant data) generated in this study have been deposited to https://zenodo.org/records/13172848.
 
-# IRIS Data:
+# Data Directory:
 ## a. benchmark
 results regarding applying existing transcriptomics-based biomarkers to predict ICB response.
 
