@@ -34,12 +34,12 @@ See **Tutorial** & **Package** here: COMING SOON     *(By September 2024)*
 The CODEFACS, LIRICS, SOCIAL, CytoSPACE, and SPECIAL data (and relevant data) generated in this study have been deposited to https://zenodo.org/records/13172848.
 
 ## Folders
-0. **Data**: details regarding data files from zenodo
-1. **IRIS**: code to reproduce results for **I**mmunotherapy **R**esistance *cell-cell* **I**nteraction **S**canner
-2. **Benchmark**: code to reproduce results for previously established transcriptomics biomarkers' of ICB
-3. **SOCIAL & SPECIAL**: code to reproduce results for **S**ingle-cell transcrip**O**mics **C**ell-cell **I**nteraction **AL**gorithm and **SP**atial c**E**ll-**C**ell **I**nteraction **AL**gorithm
-4. **Figure**: code to reproduce figures and results
-5. **Package(s)** **[coming soon]**: R packages for user implementation of **IRIS**, **SOCIAL**, and **SPECIAL** in their own work
+0. **0-Data**: details regarding data files from zenodo
+1. **1-IRIS**: code to reproduce results for **I**mmunotherapy **R**esistance *cell-cell* **I**nteraction **S**canner
+2. **2-Benchmark**: code to reproduce results for previously established transcriptomics biomarkers' of ICB
+3. **3-SOCIAL & SPECIAL**: code to reproduce results for **S**ingle-cell transcrip**O**mics **C**ell-cell **I**nteraction **AL**gorithm and **SP**atial c**E**ll-**C**ell **I**nteraction **AL**gorithm
+4. **4-Figure**: code to reproduce figures and results
+5. **5-Package(s)** **[coming soon]**: R packages for user implementation of **IRIS**, **SOCIAL**, and **SPECIAL** in their own work
     1. **IRIS** R package with vignettes
     2. **SOCIAL** R package (includes SPECIAL) with vignettes
 
