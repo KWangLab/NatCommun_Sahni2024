@@ -53,7 +53,7 @@ LIRICS data genereated for this study.
 ### iii. organized data/TCGA
 1. **```TCGA_LIRICS_SURV.Rdata```** Organized LIRICS data for TCGA-SKCM with prorgession free and overall survival timeline information
 2. **```TCGA_LIRICS.Rdata```** Organized LIRICS data for TCGA-SKCM with additional meta information (deconvolved cell fraction, hot/cold TME, etc.)
-   * *note that "tmb", "aneuoploidy", and "purity" were **NOT** used in this study and are from: Taylor et al. Cell 2018*
+   * *note that "tmb", "aneuoploidy", and "purity" were **NOT** used in this study and are from: [Taylor et al. Cell](https://pubmed.ncbi.nlm.nih.gov/29622463/) 2018*
 
 ## e. miscellaneous
 1. **```coding_genes.txt```** list of protein coding genes
