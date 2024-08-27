@@ -11,7 +11,7 @@ calculate_score <- function(test, name, features){ #
   })
   ensembl_df=do.call(cbind, ensembl_df)
   
-  score_df = ensembl_df %>% apply(1,function(x){sum(x,na.rm=T)}) %>% data.frame(sample = test[,1], response=test[,2], score=./length(train)) ###NEW /length(train)
+  score_df = ensembl_df %>% apply(1,function(x){sum(x,na.rm=T)}) %>% data.frame(sample = test[,1], cohort=name, response=test[,2], score=./length(train)) ###NEW /length(train)
   
   return(score_df)
 }
