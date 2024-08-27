@@ -12,7 +12,6 @@ calculate_score <- function(test, name, features){ #
   ensembl_df=do.call(cbind, ensembl_df)
   
   score_df = ensembl_df %>% apply(1,function(x){sum(x,na.rm=T)}) %>% data.frame(sample = test[,1], response=test[,2], score=./length(train)) ###NEW /length(train)
-  # 08/27/24 added column "sample = test[,1] to data.frame". 
   
   return(score_df)
 }
