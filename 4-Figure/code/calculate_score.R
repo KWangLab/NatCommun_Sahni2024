@@ -60,6 +60,8 @@ calculate_score_scaled_tcga <- function(test, name, features){
   
   return(score_df)
 }
+
+## load R data files
 loadRData <- function(fileName){
   #loads an RData file, and returns it
   load(fileName)
