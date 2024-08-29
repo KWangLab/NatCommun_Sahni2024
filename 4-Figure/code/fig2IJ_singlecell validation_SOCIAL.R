@@ -19,7 +19,7 @@ library(abind)
 
 ## ------- Functions -------
 patient_score <- function(test, name, features){
-  score_df = calculate_score_scaled(test, name, features)
+  score_df = calculate_score(test, name, features)
   score_df = score_df %>% mutate(cohort=name,response=factor(mapvalues(test[,2],from=c('NAV','RES'), to=c('naïve','post-ICB resistant')), levels=c('naïve','post-ICB resistant'))) 
   
   return(score_df)
