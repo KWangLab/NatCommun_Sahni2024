@@ -16,7 +16,7 @@ library(scales)
 
 ## ------- Functions -------
 patient_score <- function(test, name, features){
-  score_df = calculate_score_scaled(test,name,features)
+  score_df = calculate_score(test,name,features)
   score_df = score_df  %>% mutate(cohort=name,response=factor(mapvalues(response,from=c(0,1), to=c('NR','R')), levels=c('R','NR'))) 
   return(score_df)
 }
