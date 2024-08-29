@@ -1,8 +1,9 @@
 ## standard scoring function for organized survival input 
-## column  1: sample
-##         2: response
-##         3: time
-##         4: status
+## column  1: sample (any value)
+##         2: response (any value)
+##         3: time (any value)
+##         4: status (any value)
+##         n: LigandCell_ReceptorCell_Ligand_Receptor (0 or 1)
 calculate_score_surv <- function(test, name, features){ # standard scoring function for organized survival input (column 1 sample; column 2 response
   input_name = strsplit(name, '_') %>% unlist(.) %>% .[[1]] 
   features_name = strsplit(names(features),'_') %>% sapply(.,'[[',1) %>% unlist(.)
@@ -24,6 +25,7 @@ calculate_score_surv <- function(test, name, features){ # standard scoring funct
 ## standard scoring function for organized response input 
 ## column  1: sample
 ##         2: response
+##         n: LigandCell_ReceptorCell_Ligand_Receptor (0 or 1)
 calculate_score <- function(test, name, features){ # standard scoring function (column 1 sample; column 2 response)
   input_name = strsplit(name, '_') %>% unlist(.) %>% .[[1]] 
   features_name = strsplit(names(features),'_') %>% sapply(.,'[[',1) %>% unlist(.)
@@ -42,7 +44,9 @@ calculate_score <- function(test, name, features){ # standard scoring function (
   return(score_df)
 }
 
-## standard scoring function for organized TCGA input (16 columns)
+## standard scoring function for organized TCGA input
+##         1-16: organized TCGA meta information
+##         n: LigandCell_ReceptorCell_Ligand_Receptor (0 or 1)
 calculate_score_scaled_tcga <- function(test, name, features){
   input_name = strsplit(name, '_') %>% unlist(.) %>% .[[1]] 
   features_name = strsplit(names(features),'_') %>% sapply(.,'[[',1) %>% unlist(.)
