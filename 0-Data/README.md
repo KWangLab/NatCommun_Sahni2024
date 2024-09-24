@@ -89,7 +89,7 @@ Cell fraction data generated for input to CytoSPACE.
 ### i. Thrane et al./cell fraction
 Spatial Seurat deconvolved cell fraction at each spatial coordinate
 
-### i. Thrane et al./weights
+### ii. Thrane et al./weights
 Spatial Seurat deconvolved cell fraction across the entire spatial slide (used for CytoSPACE)
 
 # Citation
