@@ -21,14 +21,14 @@ We developed an R method, **SOCIAL** (**S**ingle-cell transcript**O**mics **C**e
 
 SOCIAL comprises three main steps: 1. Querying the LIRICS database: Initially, we queried the LIRICS database to identify plausible ligand-receptor interactions; 2. Computing interaction scores: Next, we computed the ligand-receptor interaction score by multiplying the average expression levels of the ligand and receptor complexes for each interaction pair and cell type. 3. Permutation testing: Following that, we performed permutation tests (utilizing 100 iterations in our study) by randomly shuffling cell type labels. This allowed us to derive empirical p-values by calculating the fraction of permutation tests resulting in a higher interaction score than the foreground score determined in step 2. A lower p-value suggests a higher likelihood of the interaction occurring. 4. Optionally, ligand-receptor interactions can be further denoted as significantly activated if the average expression level of both the ligand and receptor genes is greater than the median across all samples.
 
-See **Tutorial** & **Package** here: COMING SOON     *(By September 2024)*
+See **Tutorial** & **Package** here: https://github.com/KWangLab/SOCIAL
 
 ### SPECIAL: **SP**atial c**E**ll-**C**ell **I**nteraction **AL**gorithm
 <img src="https://github.com/kwangcb/IRIS/blob/main/4-Figure/figures/biorender/png/SPECIAL%20%5Bnc%20acc%5D.png" alt="grouping">
 
 To quantify the activity of cell-type-specific ligand-receptor interactions within each spatial transcriptomics slide, we further developed our in-house single-cell ligand-receptor inference tool called SOCIAL, into SPECIAL (**SP**atial c**E**ll-**C**ell **I**nteraction **AL**gorithm). This novel iteration is customized specifically for spatial transcriptomics with aligned single-cell transcriptomes, the direct output of [**CytoSPACE**](https://github.com/digitalcytometry/cytospace/tree/main). It consists of three major steps: Step I utilizes either a sliding window or k-means clustering approach on bulk (i.e. Visium 10X and Legacy) and SlideSeqV2 spatial transcriptomics, respectively, to divide spatial slides into “regions” of approximately 250 μm in diameter. Step II employs SOCIAL steps 1 through 3 to infer cell-type-specific interaction activity within each ~250 μm region. Step III, ligand-receptor interactions are further denoted as significantly activated if the average expression levels of both the ligand and receptor genes within the respective cell type is greater than the median across all regions. The final output of SPECIAL is a cell-type-specific ligand-receptor interaction activity profile across all regions in a spatial transcriptomics slide.
 
-See **Tutorial** & **Package** here: COMING SOON     *(By September 2024)*
+See **Tutorial** & **Package** here: https://github.com/KWangLab/SPECIAL
 
 ## Data availability 
 The CODEFACS, LIRICS, SOCIAL, CytoSPACE, and SPECIAL data (and relevant data) generated in this study have been deposited to https://zenodo.org/records/13172848.
@@ -39,9 +39,6 @@ The CODEFACS, LIRICS, SOCIAL, CytoSPACE, and SPECIAL data (and relevant data) ge
 2. **2-Benchmark**: code to reproduce results for previously established transcriptomics biomarkers' of ICB
 3. **3-SOCIAL & SPECIAL**: code to reproduce results for **S**ingle-cell transcrip**O**mics **C**ell-cell **I**nteraction **AL**gorithm and **SP**atial c**E**ll-**C**ell **I**nteraction **AL**gorithm
 4. **4-Figure**: code to reproduce figures and results
-5. **5-Package(s)** **[coming soon]**: R packages for user implementation of **IRIS**, **SOCIAL**, and **SPECIAL** in their own work
-    1. **IRIS** R package with vignettes
-    2. **SOCIAL** R package (includes SPECIAL) with vignettes
 
 ## System requirements
 IRIS, SOCIAL, and SPECIAL were developed on R (v4.4.1) using R packages: dplyr (v1.1.4), magrittr (v2.0.3), parallel (v4.4.1), pROC (v1.18.5), rBayesianOptimization (v1.2.1), tidyr (v1.3.1), abind (v1.4-5), Matrix (v1.7-0),  urr (v1.0.2), reshape2 (1.4.4), rslurm (v0.6.2), and stats (v4.4.1). All analyses were done on R (v4.4.1).
