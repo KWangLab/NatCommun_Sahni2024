@@ -1,1 +1,1 @@
-Code to reproduce the results of IRIS. For implementation of IRIS within your own work, please see the **IRIS** package here: https://github.com/KWangLab/IRIS
+Code to reproduce the results of SOCIAL and SPECIAL. For implementation of SOCIAL and SPECIAL within your own work, please see the **SOCIAL** package here: https://github.com/KWangLab/SOCIAL, and the **SPECIAL** package here: https://github.com/KWangLab/SPECIAL.
