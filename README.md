@@ -48,7 +48,10 @@ If using IRIS, SOCIAL, SPECIAL, or any of the pertaining results, please cite:
 
 Sahni et al. "A machine learning model reveals expansive downregulation of ligand-receptor interactions enhancing lymphocyte infiltration in melanoma with acquired resistance to Immune Checkpoint Blockade. *N C* **X**, XXXX (XXXX). https://doi.org
 
-## Author(s)
+## Acknowledgement(s)
+### Lead Author
+1. **Sahil Sahni**
+   
 ### Corresponding Author(s)
 1. **Kun Wang** (kwang222@illinois.edu)
 2. **Eytan Ruppin** (eytan.ruppin@nih.gov)
