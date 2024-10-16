@@ -3,7 +3,7 @@
 
 Code repository to reproduce the results and findings that are published in: 
 
-Sahni et al. "A machine learning model reveals expansive downregulation of ligand-receptor interactions enhancing lymphocyte infiltration in melanoma with acquired resistance to Immune Checkpoint Blockade. *XXX* **X**, XXXX (XXXX). https://doi.org
+Sahni, S., Wang, B., Wu, D. et al. A machine learning model reveals expansive downregulation of ligand-receptor interactions that enhance lymphocyte infiltration in melanoma with developed resistance to immune checkpoint blockade. Nat Commun 15, 8867 (2024). [https://doi.org/10.1038/s41467-024-52555-4](https://rdcu.be/dXbLv)
 
 ### IRIS: **I**mmunotherapy **R**esistance *cell-cell* **I**nteraction **S**canner
 <img src="https://github.com/kwangcb/IRIS/blob/main/4-Figure/figures/biorender/png/IRIS%20figure%201%20Final%20Version%20%5Bnc%20acc%5D.png" alt="grouping">
@@ -46,7 +46,7 @@ IRIS, SOCIAL, and SPECIAL were developed on R (v4.4.1) using R packages: dplyr (
 ## Citation
 If using IRIS, SOCIAL, SPECIAL, or any of the pertaining results, please cite:
 
-Sahni et al. "A machine learning model reveals expansive downregulation of ligand-receptor interactions enhancing lymphocyte infiltration in melanoma with acquired resistance to Immune Checkpoint Blockade. *N C* **X**, XXXX (XXXX). https://doi.org
+Sahni, S., Wang, B., Wu, D. et al. A machine learning model reveals expansive downregulation of ligand-receptor interactions that enhance lymphocyte infiltration in melanoma with developed resistance to immune checkpoint blockade. Nat Commun 15, 8867 (2024). [https://doi.org/10.1038/s41467-024-52555-4](https://rdcu.be/dXbLv)
 
 ## Acknowledgement(s)
 ### Lead Author(s)
