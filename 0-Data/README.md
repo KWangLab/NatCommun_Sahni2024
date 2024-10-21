@@ -1,5 +1,5 @@
 # Data availability
-The CODEFACS, LIRICS, SOCIAL, CytoSPACE, and SPECIAL data (and relevant data) generated in this study have been deposited to https://zenodo.org/records/13172848.
+The CODEFACS, LIRICS, SOCIAL, CytoSPACE, and SPECIAL data (and relevant data) generated in this study have been deposited to [https://zenodo.org/records/13172848](https://zenodo.org/records/13172848).
 
 # Data Directory:
 ## a. benchmark
@@ -98,5 +98,7 @@ If using IRIS, SOCIAL, SPECIAL, or any of the pertaining results and data, pleas
 Sahni, S., Wang, B., Wu, D. et al. A machine learning model reveals expansive downregulation of ligand-receptor interactions that enhance lymphocyte infiltration in melanoma with developed resistance to immune checkpoint blockade. Nat Commun 15, 8867 (2024). [https://doi.org/10.1038/s41467-024-52555-4](https://rdcu.be/dXbLv)
 
 # Corresponding Author(s)
-Kun Wang (kwang222@nih.gov)
-Eytan Ruppin (eytan.ruppin@nih.gov)
+1. **Kun Wang** (kwang222@illinois.edu)^
+2. **Eytan Ruppin** (eytan.ruppin@nih.gov)^
+
+^*equally-contributing corresponding author(s)*
