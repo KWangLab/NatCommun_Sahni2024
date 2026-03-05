@@ -1,4 +1,5 @@
 ## SOCIAL & SPECIAL
+## Correction on 03/05/26
 library(tidyverse)
 library(Matrix)
 library(parallel)
@@ -101,9 +102,9 @@ SOCIAL.calculate_interaction_score <- function(expr,ct_map, pairs, n_iterations 
       else
         ligand_exp = as.numeric(summary_expr[g1,ct1])
       if(length(g2) > 1)
-        receptor_exp = min(as.numeric(summary_expr[g2,ct1]))
+        receptor_exp = min(as.numeric(summary_expr[g2,ct2])) # 3/5/26: corrected ct1 to ct2
       else
-        receptor_exp = as.numeric(summary_expr[g2,ct1])
+        receptor_exp = as.numeric(summary_expr[g2,ct2]) # 3/5/26: corrected ct1 to ct2
       
       #interaction score
       sc = ligand_exp*receptor_exp 
@@ -139,9 +140,9 @@ SOCIAL.calculate_interaction_score <- function(expr,ct_map, pairs, n_iterations 
       score = c()
       receptor_exp = NULL
       if(length(g2) > 1)
-        receptor_exp = min(as.numeric(summary_expr[g2,ct1]))
+        receptor_exp = min(as.numeric(summary_expr[g2,ct2])) # 3/5/26: corrected ct1 to ct2
       else
-        receptor_exp = as.numeric(summary_expr[g2,ct1])
+        receptor_exp = as.numeric(summary_expr[g2,ct2]) # 3/5/26: corrected ct1 to ct2
       
       #receptor expression
       sc = receptor_exp 
@@ -191,9 +192,9 @@ SOCIAL.calculate_interaction_score <- function(expr,ct_map, pairs, n_iterations 
         else
           ligand_exp = as.numeric(summary_expr[g1,ct1])
         if(length(g2) > 1)
-          receptor_exp = min(as.numeric(summary_expr[g2,ct1]))
+          receptor_exp = min(as.numeric(summary_expr[g2,ct2])) # 3/5/26: corrected ct1 to ct2
         else
-          receptor_exp = as.numeric(summary_expr[g2,ct1]) 
+          receptor_exp = as.numeric(summary_expr[g2,ct2]) # 3/5/26: corrected ct1 to ct2
         
         #null score
         sc = ligand_exp*receptor_exp 
