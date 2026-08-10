@@ -1,7 +1,9 @@
 ## SOCIAL & SPECIAL
-library(tidyverse)
+## Correction 11/07/2025 by Sahil Sahni: Fixed interaction score to LigandExpression * ReceptorExpression from LigandExpression^2
+#library(tidyverse)
 library(Matrix)
 library(parallel)
+library(purrr)
 ## ------- Functions for SOCIAL -------
 
 ## Step 1 Functions:
@@ -101,9 +103,9 @@ SOCIAL.calculate_interaction_score <- function(expr,ct_map, pairs, n_iterations 
       else
         ligand_exp = as.numeric(summary_expr[g1,ct1])
       if(length(g2) > 1)
-        receptor_exp = min(as.numeric(summary_expr[g2,ct1]))
+        receptor_exp = min(as.numeric(summary_expr[g2,ct2])) # CORRECTION (11/07/25): changed ct1 -> ct2 
       else
-        receptor_exp = as.numeric(summary_expr[g2,ct1])
+        receptor_exp = as.numeric(summary_expr[g2,ct2]) # CORRECTION (11/07/25): changed ct1 -> ct2
       
       #interaction score
       sc = ligand_exp*receptor_exp 
@@ -139,9 +141,9 @@ SOCIAL.calculate_interaction_score <- function(expr,ct_map, pairs, n_iterations 
       score = c()
       receptor_exp = NULL
       if(length(g2) > 1)
-        receptor_exp = min(as.numeric(summary_expr[g2,ct1]))
+        receptor_exp = min(as.numeric(summary_expr[g2,ct2])) # CORRECTION (11/07/25): changed ct1 -> ct2
       else
-        receptor_exp = as.numeric(summary_expr[g2,ct1])
+        receptor_exp = as.numeric(summary_expr[g2,ct2]) # CORRECTION (11/07/25): changed ct1 -> ct2
       
       #receptor expression
       sc = receptor_exp 
@@ -191,9 +193,9 @@ SOCIAL.calculate_interaction_score <- function(expr,ct_map, pairs, n_iterations 
         else
           ligand_exp = as.numeric(summary_expr[g1,ct1])
         if(length(g2) > 1)
-          receptor_exp = min(as.numeric(summary_expr[g2,ct1]))
+          receptor_exp = min(as.numeric(summary_expr[g2,ct2])) # CORRECTION (11/07/25): changed ct1 -> ct2
         else
-          receptor_exp = as.numeric(summary_expr[g2,ct1]) 
+          receptor_exp = as.numeric(summary_expr[g2,ct2]) # CORRECTION (11/07/25): changed ct1 -> ct2
         
         #null score
         sc = ligand_exp*receptor_exp 
@@ -505,7 +507,7 @@ SPECIAL <- function(expr, pairs, loc, name, n_iterations, path_special, distance
   cellcount = region %>% 
     group_by(`samples`, cell_type) %>%
     dplyr::summarise(count=n()) %>% 
-    pivot_wider(., names_from=cell_type, values_from=count) %>% as.data.frame(.) %>%
+    tidyr::pivot_wider(., names_from=cell_type, values_from=count) %>% as.data.frame(.) %>%
     set_rownames(.$samples) %>% .[,-1] %>% replace(., is.na(.), 0) 
   cellfraction = cellcount/rowSums(cellcount)  
   
@@ -541,7 +543,7 @@ SPECIAL <- function(expr, pairs, loc, name, n_iterations, path_special, distance
   rslurm_df = data.frame(run=run, samples=samples, expr_path=expr_path, ct_map_path=ct_map_path, pairs_path=pairs_path, path_social=path_social, n_iterations=n_iterations)
   
   ## run rslurm (SOCIAL Step 2-3)
-  sjob = slurm_apply(run_cis_rslurm, rslurm_df, jobname=name, nodes=nrow(rslurm_df), cpus_per_node=8,submit=TRUE, slurm_options=list(time='72:00:00', mem='280g', partition='norm,ccr'), preschedule_cores=FALSE) 
+  sjob = slurm_apply(run_cis_rslurm, rslurm_df, jobname=name, nodes=nrow(rslurm_df), cpus_per_node=8,submit=TRUE, slurm_options=list(time='72:00:00', mem='280g'), preschedule_cores=FALSE) 
   profile = get_slurm_out(sjob, outtype = 'raw', wait = TRUE)
   cleanup_files(sjob) #remove slurm folder
   names(profile) = rslurm_df$samples
@@ -694,7 +696,7 @@ SPECIAL.cohort <- function(path_special, path_input, n_iterations, distance, pla
   jobname = paste('per','index',Sys.time(), sep='_')
   
   #run rslurm 
-  sjob_out = slurm_apply(SPECIAL.per_sample, rslurm_df, jobname=jobname, nodes=nrow(rslurm_df), cpus_per_node=8,submit=TRUE, slurm_options=list(time='72:00:00', mem='10g', partition='norm,ccr'), preschedule_cores=FALSE) 
+  sjob_out = slurm_apply(SPECIAL.per_sample, rslurm_df, jobname=jobname, nodes=nrow(rslurm_df), cpus_per_node=8,submit=TRUE, slurm_options=list(time='72:00:00', mem='10g'), preschedule_cores=FALSE) 
   output = get_slurm_out(sjob_out, outtype = 'raw', wait = TRUE)
   #cleanup_files(sjob_out)
   
@@ -715,7 +717,7 @@ SPECIAL.per_sample <- function(index, path_input, path_special, n_iterations, di
   rslurm_df = data.frame(index=index, path_input=path_input, path_special=path_special, n_iterations=n_iterations, distance=distance, platform=platform, puck_diameter=puck_diameter)
   
   #run rslurm per slide
-  sjob_in = slurm_apply(run_special_rslurm, rslurm_df, jobname=paste('index',index,sep="_"), nodes=nrow(rslurm_df), cpus_per_node=10,submit=TRUE, slurm_options=list(time='72:00:00', mem='40g', partition='norm,ccr'), preschedule_cores=FALSE) #2 before 
+  sjob_in = slurm_apply(run_special_rslurm, rslurm_df, jobname=paste('index',index,sep="_"), nodes=nrow(rslurm_df), cpus_per_node=10,submit=TRUE, slurm_options=list(time='72:00:00', mem='40g'), preschedule_cores=FALSE) #2 before 
   output = get_slurm_out(sjob_in, outtype = 'raw', wait = TRUE)
   #cleanup_files(sjob_in)
   
