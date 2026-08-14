@@ -1,5 +1,6 @@
 # A machine learning model reveals expansive downregulation of ligand-receptor interactions enhancing lymphocyte infiltration in melanoma with acquired resistance to Immune Checkpoint Blockade
-**Last Updated: 08/10/2026**: Correction to SOCIAL code; please rerun SOCIAL and SPECIAL analyses that used the previous version (before August 10, 2026).
+**Last Updated: 
+08/10/2026**: Correction to SOCIAL code; please rerun SOCIAL and SPECIAL analyses that used the previous version (before August 10, 2026).
 
 Code repository to reproduce the results and findings that are published in: 
 
